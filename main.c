@@ -6,7 +6,7 @@
  */
 
 
-//#define F_CPU 8000000L  //nie pisz tego jak kozystasz z eclipse bo mogą byc błędy
+//#define F_CPU 8000000L  //nie pisz tego jak korzystasz z eclipse bo mogą byc błędy
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -28,6 +28,6 @@ void main(void)
    while (1)
    {
         if(  !(PINB & (1<<SW) )) PORTB |= (1<<LED1) ;
-        else PORTB &= ~(1<<LED1);
+        else ;//PORTB &= ~(1<<LED1);
     }
 }
