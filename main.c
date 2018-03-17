@@ -14,6 +14,7 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include <stdlib.h>
 #include "LCD/lcd44780.h"
 
 // Makra upraszczaj�ce dost�p do port�w
@@ -29,29 +30,23 @@
 
 
 //Definicja przycisk�w
-#define KEY_PORT	 B
-#define KEY_PIN	1
+#define KEY_PORT	 	B
+#define KEY_PIN			1
 
 #define KEY 		!(PIN(KEY_PORT)	 & (1<<KEY_PIN))
 
 
 //Definicja wyjsc
-#define LED	0
-#define LED_PORT	B
-#define LED_OFF		PORT(LED_PORT)&=~(1<<LED)
-#define LED_ON		PORT(LED_PORT)|=(1<<LED)
-#define LED_TOG		PORT(LED_PORT)^=(1<<LED)
+#define LED				0
+#define LED_PORT		B
+#define LED_OFF			PORT(LED_PORT)&=~(1<<LED)
+#define LED_ON			PORT(LED_PORT)|=(1<<LED)
+#define LED_TOG			PORT(LED_PORT)^=(1<<LED)
 
 
 
 void main(void)
 {
-	lcd_init();
-	lcd_cls();
-		lcd_str("test");
-		//_delay_ms(1000);
-
-
 	uint8_t key_lock=0;
 
 	//przycisk
@@ -60,8 +55,14 @@ void main(void)
 
 	//dioda
 	DDR(LED_PORT)	|=	(1<<LED);
-	LED_OFF;
+	LED_ON;
 
+
+	lcd_init();
+	_delay_ms(50);
+	lcd_cls();
+	lcd_str("test");
+	//_delay_ms(1000);
 
 	while(1)
 	{
