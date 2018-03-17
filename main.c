@@ -13,6 +13,7 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include "LCD/lcd44780.h"
 
 #define LED1 PB0
 #define SW PB1
@@ -31,7 +32,7 @@ void main(void)
         if(  !(PINB & (1<<SW) )) PORTB ^= (1<<LED1) ;
         else ;
         _delay_ms(100);
-
+        _delay_ms(100);
 
     }
 }
