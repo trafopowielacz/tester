@@ -26,11 +26,19 @@
 
 
 //Definicja przycisków
-#define KEY_PORT			C
-#define KEY_PIN 			2
+#define KEY_PORT				B
+#define KEY_PIN		 			1
+
+#define KEY 		!(PIN(KEY_PORT)	 & (1<<KEY_PIN))
 
 
-//#define KEY_UP 		!(PIN(KEY_PORT)	 & (1<<UP))
+//Definicja wyjœc
+#define LED			0
+#define LED_PORT	B
+#define LED_OFF		PORT(LED_PORT)&=~(1<<LED)
+#define LED_ON		PORT(LED_PORT)|=(1<<LED)
+#define LED_TOG		PORT(LED_PORT)^=(1<<LED)
+
 
 #define LED1 PB0
 #define SW PB1
@@ -40,17 +48,28 @@ void main(void)
 {
 	uint8_t key_lock=0;
 
-    DDRB  |= (1<<LED1);
+	//przycisk
+	DDR(KEY_PORT)	&= ~(1<<KEY_PIN);
+	PORT(KEY_PORT)	|= (1<<KEY_PIN);
+
+    //DDRB  |= (1<<LED1);
+
+	//dioda
+    DDR(LED_PORT)	|=	(1<<LED);
+    LED_OFF;
 
 
-    DDRB &= ~(1<<SW);
-    PORTB |= (1<<SW);
+    //DDRB &= ~(1<<SW);
+    //PORTB |= (1<<SW);
 
    while (1)
    {
-        if(!(PINB&(1<<SW) )) PORTB ^= (1<<LED1) ;
-        else ;
-        _delay_ms(100);
+        if(!key_lock && KEY)
+        {
+        	LED_TOG;
+        	key_lock = 1;
+        }
+        if(!KEY)	key_lock = 0;
         _delay_ms(100);
 
     }
