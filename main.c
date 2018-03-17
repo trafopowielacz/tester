@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include "LCD/lcd4478.h"
 
-// Makra upraszczaj�ce dost�p do port�w
+// Makra upraszczajace dostep do portow
 // *** PORT
 #define PORT(x) SPORT(x)
 #define SPORT(x) (PORT##x)
