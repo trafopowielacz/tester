@@ -28,7 +28,10 @@ void main(void)
 
    while (1)
    {
-        if(  !(PINB & (1<<SW) )) PORTB |= (1<<LED1) ;
-        else ;//PORTB &= ~(1<<LED1);
+        if(  !(PINB & (1<<SW) )) PORTB ^= (1<<LED1) ;
+        else ;
+        _delay_ms(100);
+
+
     }
 }
