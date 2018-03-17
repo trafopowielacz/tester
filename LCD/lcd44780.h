@@ -1,25 +1,25 @@
 //-----------------------------------------------------------------------------------------------------------
-// *** Obs³uga wyœwietlaczy alfanumerycznych zgodnych z HD44780 ***
+// *** Obsï¿½uga wyï¿½wietlaczy alfanumerycznych zgodnych z HD44780 ***
 //
 // - Sterowanie: tryb 4-bitowy
-// - Dowolne przypisanie ka¿dego sygna³u steruj¹cego do dowolnego pinu mikrokontrolera
-// - Praca z pinem RW pod³¹czonym do GND lub do mikrokontrolera (sprawdzanie BusyFLAG - szybkie operacje LCD)
+// - Dowolne przypisanie kaï¿½dego sygnaï¿½u sterujï¿½cego do dowolnego pinu mikrokontrolera
+// - Praca z pinem RW podï¿½ï¿½czonym do GND lub do mikrokontrolera (sprawdzanie BusyFLAG - szybkie operacje LCD)
 //
 // Pliki 			: lcd44780.c , lcd44780.h
 // Mikrokontrolery 	: Atmel AVR
 // Kompilator 		: avr-gcc
-// ród³o 			: http://www.atnel.pl
+// ï¿½rï¿½dï¿½o 			: http://www.atnel.pl
 // Data 			: marzec 2010
-// Autor 			: Miros³aw Kardaœ
+// Autor 			: Mirosï¿½aw Kardaï¿½
 //----------------------------------------------------------------------------------------------------------
-// Rozmiar kodu z za³¹czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str() 				(RW<-->GND)
-// dla procesorów AVR: 240 bajtów !!!
-// Rozmiar kodu z za³¹czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str(), lcd_locate()	(RW<-->GND)
-// dla procesorów AVR: 254 bajty
-// Rozmiar kodu z za³¹czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str() 				(RW<-->uC)
-// dla procesorów AVR: 326 bajtów !!!
-// Rozmiar kodu z za³¹czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str(), lcd_locate()	(RW<-->uC)
-// dla procesorów AVR: 340 bajtów
+// Rozmiar kodu z zaï¿½ï¿½czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str() 				(RW<-->GND)
+// dla procesorï¿½w AVR: 240 bajtï¿½w !!!
+// Rozmiar kodu z zaï¿½ï¿½czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str(), lcd_locate()	(RW<-->GND)
+// dla procesorï¿½w AVR: 254 bajty
+// Rozmiar kodu z zaï¿½ï¿½czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str() 				(RW<-->uC)
+// dla procesorï¿½w AVR: 326 bajtï¿½w !!!
+// Rozmiar kodu z zaï¿½ï¿½czonymi tylko funkcjami: lcd_init(), lcd_cls(), lcd_str(), lcd_locate()	(RW<-->uC)
+// dla procesorï¿½w AVR: 340 bajtï¿½w
 //-----------------------------------------------------------------------------------------------------------
 #ifndef LCD_H_
 #define LCD_H_
@@ -28,41 +28,41 @@
 //		Parametry pracy sterownika
 //
 //----------------------------------------------------------------------------------------
-// rozdzielczoœæ wyœwietlacza LCD (wiersze/kolumny)
-#define LCD_Y 2		// iloœæ wierszy wyœwietlacza LCD
-#define LCD_X 16	// iloœæ kolumn wyœwietlacza LCD
+// rozdzielczoï¿½ï¿½ wyï¿½wietlacza LCD (wiersze/kolumny)
+#define LCD_Y 2		// iloï¿½ï¿½ wierszy wyï¿½wietlacza LCD
+#define LCD_X 16	// iloï¿½ï¿½ kolumn wyï¿½wietlacza LCD
 
-// tu ustalamy za pomoc¹ zera lub jedynki czy sterujemy pinem RW
-//	0 - pin RW pod³¹czony na sta³e do GND
-//	1 - pin RW pod³¹czony do mikrokontrolera
+// tu ustalamy za pomocï¿½ zera lub jedynki czy sterujemy pinem RW
+//	0 - pin RW podï¿½ï¿½czony na staï¿½e do GND
+//	1 - pin RW podï¿½ï¿½czony do mikrokontrolera
 #define USE_RW 0
 
 //----------------------------------------------------------------------------------------
 //
-//		Ustawienia sprzêtowe po³¹czeñ sterownika z mikrokontrolerem
+//		Ustawienia sprzï¿½towe poï¿½ï¿½czeï¿½ sterownika z mikrokontrolerem
 //
 //----------------------------------------------------------------------------------------
-// tu konfigurujemy port i piny do jakich pod³¹czymy linie D7..D4 LCD
-#define LCD_D7PORT  D
-#define LCD_D7 2
-#define LCD_D6PORT  D
-#define LCD_D6 3
-#define LCD_D5PORT  D
-#define LCD_D5 4
-#define LCD_D4PORT  B
-#define LCD_D4 6
+// tu konfigurujemy port i piny do jakich podï¿½ï¿½czymy linie D7..D4 LCD
+#define LCD_D7PORT  C
+#define LCD_D7 0
+#define LCD_D6PORT  C
+#define LCD_D6 1
+#define LCD_D5PORT  C
+#define LCD_D5 2
+#define LCD_D4PORT  C
+#define LCD_D4 3
 
 
-// tu definiujemy piny procesora do których pod³¹czamy sygna³y RS,RW, E
-#define LCD_RSPORT D
-#define LCD_RS 0
+// tu definiujemy piny procesora do ktï¿½rych podï¿½ï¿½czamy sygnaï¿½y RS,RW, E
+#define LCD_RSPORT C
+#define LCD_RS 5
 
 #define LCD_RWPORT B
 #define LCD_RW 1
 
-#define LCD_EPORT D
-#define LCD_E 1
-//------------------------------------------------  koniec ustawieñ sprzêtowych ---------------
+#define LCD_EPORT C
+#define LCD_E 4
+//------------------------------------------------  koniec ustawieï¿½ sprzï¿½towych ---------------
 
 
 //----------------------------------------------------------------------------------------
@@ -70,42 +70,42 @@
 //*																						 *
 //*		U S T A W I E N I A   KOMPILACJI												 *
 //*																						 *
-//*		W³¹czamy kompilacjê komend u¿ywanych lub wy³¹czamy nieu¿ywanych					 *
-//*		(dziêki temu regulujemy zajêtoœæ pamiêci FLASH po kompilacji)					 *
+//*		Wï¿½ï¿½czamy kompilacjï¿½ komend uï¿½ywanych lub wyï¿½ï¿½czamy nieuï¿½ywanych					 *
+//*		(dziï¿½ki temu regulujemy zajï¿½toï¿½ï¿½ pamiï¿½ci FLASH po kompilacji)					 *
 //*																						 *
-//*		1 - oznacza W£¥CZENIE do kompilacji												 *
-//*		0 - oznacza wy³¹czenie z kompilacji (funkcja niedostêpna)						 *
+//*		1 - oznacza Wï¿½ï¿½CZENIE do kompilacji												 *
+//*		0 - oznacza wyï¿½ï¿½czenie z kompilacji (funkcja niedostï¿½pna)						 *
 //*																						 *
 //****************************************************************************************
 //----------------------------------------------------------------------------------------
 
 #define USE_LCD_LOCATE	1			// ustawia kursor na wybranej pozycji Y,X (Y=0-3, X=0-n)
 
-#define USE_LCD_CHAR 	1			// wysy³a pojedynczy znak jako argument funkcji
+#define USE_LCD_CHAR 	1			// wysyï¿½a pojedynczy znak jako argument funkcji
 
-#define USE_LCD_STR_P 	1			// wysy³a string umieszczony w pamiêci FLASH
-#define USE_LCD_STR_E 	1			// wysy³a string umieszczony w pamiêci EEPROM
+#define USE_LCD_STR_P 	1			// wysyï¿½a string umieszczony w pamiï¿½ci FLASH
+#define USE_LCD_STR_E 	1			// wysyï¿½a string umieszczony w pamiï¿½ci EEPROM
 
-#define USE_LCD_INT 	1			// wyœwietla liczbê dziesietn¹ na LCD
-#define USE_LCD_HEX 	0			// wyœwietla liczbê szesnastkow¹ na LCD
+#define USE_LCD_INT 	1			// wyï¿½wietla liczbï¿½ dziesietnï¿½ na LCD
+#define USE_LCD_HEX 	0			// wyï¿½wietla liczbï¿½ szesnastkowï¿½ na LCD
 
-#define USE_LCD_DEFCHAR		1		// wysy³a zdefiniowany znak z pamiêci RAM
-#define USE_LCD_DEFCHAR_P 	1		// wysy³a zdefiniowany znak z pamiêci FLASH
-#define USE_LCD_DEFCHAR_E 	1		// wysy³a zdefiniowany znak z pamiêci EEPROM
+#define USE_LCD_DEFCHAR		1		// wysyï¿½a zdefiniowany znak z pamiï¿½ci RAM
+#define USE_LCD_DEFCHAR_P 	1		// wysyï¿½a zdefiniowany znak z pamiï¿½ci FLASH
+#define USE_LCD_DEFCHAR_E 	1		// wysyï¿½a zdefiniowany znak z pamiï¿½ci EEPROM
 
-#define USE_LCD_CURSOR_ON 		0	// obs³uga w³¹czania/wy³¹czania kursora
-#define USE_LCD_CURSOR_BLINK 	0	// obs³uga w³¹czania/wy³¹czania migania kursora
-#define USE_LCD_CURSOR_HOME 	0	// ustawia kursor na pozycji pocz¹tkowej
+#define USE_LCD_CURSOR_ON 		0	// obsï¿½uga wï¿½ï¿½czania/wyï¿½ï¿½czania kursora
+#define USE_LCD_CURSOR_BLINK 	0	// obsï¿½uga wï¿½ï¿½czania/wyï¿½ï¿½czania migania kursora
+#define USE_LCD_CURSOR_HOME 	0	// ustawia kursor na pozycji poczï¿½tkowej
 
-//------------------------------------------------  koniec ustawieñ kompilacji ---------------
-
-
+//------------------------------------------------  koniec ustawieï¿½ kompilacji ---------------
 
 
 
 
-// definicje adresów w DDRAM dla ró¿nych wyœwietlaczy
-// inne s¹ w wyœwietlaczach 2wierszowych i w 4wierszowych
+
+
+// definicje adresï¿½w w DDRAM dla rï¿½nych wyï¿½wietlaczy
+// inne sï¿½ w wyï¿½wietlaczach 2wierszowych i w 4wierszowych
 #if ( (LCD_Y == 4) && (LCD_X == 16) )
 #define LCD_LINE1 0x00		// adres 1 znaku 1 wiersza
 #define LCD_LINE2 0x28		// adres 1 znaku 2 wiersza
@@ -119,7 +119,7 @@
 #endif
 
 
-// Makra upraszczaj¹ce dostêp do portów
+// Makra upraszczajï¿½ce dostï¿½p do portï¿½w
 // *** PORT
 #define PORT(x) SPORT(x)
 #define SPORT(x) (PORT##x)
@@ -131,7 +131,7 @@
 #define SDDR(x) (DDR##x)
 
 
-// Komendy steruj¹ce
+// Komendy sterujï¿½ce
 #define LCDC_CLS					0x01
 #define LCDC_HOME					0x02
 #define LCDC_ENTRY					0x04
@@ -161,26 +161,26 @@
 
 
 
-// deklaracje funkcji na potrzeby innych modu³ów
-void lcd_init(void);								// W£¥CZONA na sta³e do kompilacji
-void lcd_cls(void);									// W£¥CZONA na sta³e do kompilacji
-void lcd_str(char * str);							// W£¥CZONA na sta³e do kompilacji
+// deklaracje funkcji na potrzeby innych moduï¿½ï¿½w
+void lcd_init(void);								// Wï¿½ï¿½CZONA na staï¿½e do kompilacji
+void lcd_cls(void);									// Wï¿½ï¿½CZONA na staï¿½e do kompilacji
+void lcd_str(char * str);							// Wï¿½ï¿½CZONA na staï¿½e do kompilacji
 
-void lcd_locate(uint8_t y, uint8_t x);				// domyœlnie W£¥CZONA z kompilacji w pliku lcd.c
+void lcd_locate(uint8_t y, uint8_t x);				// domyï¿½lnie Wï¿½ï¿½CZONA z kompilacji w pliku lcd.c
 
-void lcd_char(char c);								// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_str_P(const char * str);							// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_str_E(char * str);							// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_int(int val);								// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_hex(int val);								// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_defchar(uint8_t nr, uint8_t *def_znak);	// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_defchar_P(uint8_t nr, uint8_t *def_znak);	// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_defchar_E(uint8_t nr, uint8_t *def_znak);	// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
+void lcd_char(char c);								// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_str_P(const char * str);							// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_str_E(char * str);							// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_int(int val);								// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_hex(int val);								// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_defchar(uint8_t nr, uint8_t *def_znak);	// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_defchar_P(uint8_t nr, uint8_t *def_znak);	// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_defchar_E(uint8_t nr, uint8_t *def_znak);	// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
 
-void lcd_home(void);								// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_cursor_on(void);							// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_cursor_off(void);							// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_blink_on(void);							// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
-void lcd_blink_off(void);							// domyœlnie wy³¹czona z kompilacji w pliku lcd.c
+void lcd_home(void);								// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_cursor_on(void);							// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_cursor_off(void);							// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_blink_on(void);							// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
+void lcd_blink_off(void);							// domyï¿½lnie wyï¿½ï¿½czona z kompilacji w pliku lcd.c
 
 #endif /* LCD_H_ */

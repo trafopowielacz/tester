@@ -13,7 +13,7 @@
 #include <util/delay.h>
 #include "LCD/lcd44780.h"
 
-// Makra upraszczaj¹ce dostêp do portów
+// Makra upraszczajï¿½ce dostï¿½p do portï¿½w
 // *** PORT
 #define PORT(x) SPORT(x)
 #define SPORT(x) (PORT##x)
@@ -25,7 +25,7 @@
 #define SDDR(x) (DDR##x)
 
 
-//Definicja przycisków
+//Definicja przyciskï¿½w
 #define KEY_PORT			C
 #define KEY_PIN 			2
 
@@ -38,6 +38,10 @@
 
 void main(void)
 {
+	lcd_init();
+
+		lcd_str_P("hello world");
+
 	uint8_t key_lock=0;
 
     DDRB  |= (1<<LED1);
