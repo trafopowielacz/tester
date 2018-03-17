@@ -29,7 +29,7 @@
 #define SDDR(x) (DDR##x)
 
 
-//Definicja przycisk�w
+//Definicja przyciskow
 #define KEY_PORT	 	B
 #define KEY_PIN			1
 
