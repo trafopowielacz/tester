@@ -10,6 +10,7 @@
 //#define F_CPU 8000000L  //nie pisz tego jak korzystasz z eclipse bo mogą byc błędy
 
 //chyba wszystko ok cos tu napisa�em widzisz?
+//abc
 
 #include <avr/io.h>
 #include <util/delay.h>
