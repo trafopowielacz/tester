@@ -66,14 +66,7 @@ void main(void)
 
 	while(1)
 	{
-		if(!key_lock && KEY)
-		{
-			LED_TOG;
-			key_lock = 1;
-		}
-		if(!KEY)	key_lock = 0;
-		_delay_ms(100);
-
-
+		if(KEY)	LED_TOG;
+		_delay_ms(500);
 	}
 }
