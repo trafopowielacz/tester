@@ -47,7 +47,7 @@
 
 void main(void)
 {
-	uint8_t key_lock=0;
+	uint8_t key_lock; //=0;
 
 	//przycisk
 	DDR(KEY_PORT)	&= ~(1<<KEY_PIN);
