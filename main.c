@@ -6,6 +6,9 @@
  */
 
 
+//---------------------------------------------------------------------------------------------
+//jest jakis problem z polskimi znakami na gicie lepiej nie uzywac
+//---------------------------------------------------------------------------------------------
 
 //#define F_CPU 8000000L  //nie pisz tego jak korzystasz z eclipse bo mogą byc błędy
 
@@ -55,25 +58,22 @@ void main(void)
 	DDR(KEY_PORT)	&= ~(1<<KEY_PIN);
 	PORT(KEY_PORT)	|= (1<<KEY_PIN);
 
-    //DDRB  |= (1<<LED1);
-
 	//dioda
-    DDR(LED_PORT)	|=	(1<<LED);
-    LED_OFF;
+	DDR(LED_PORT)	|=	(1<<LED);
+	LED_OFF;
+
+	lcd_init(); //inicjalizuje wysw
+
+	while(1)
+	{
+		if(!key_lock && KEY)
+		{
+			LED_TOG;
+			key_lock = 1;
+		}
+		if(!KEY)	key_lock = 0;
+		_delay_ms(100);
 
 
-    //DDRB &= ~(1<<SW);
-    //PORTB |= (1<<SW);
-
-   while (1)
-   {
-        if(!key_lock && KEY)
-        {
-        	LED_TOG;
-        	key_lock = 1;
-        }
-        if(!KEY)	key_lock = 0;
-        _delay_ms(100);
-
-    }
+	}
 }
