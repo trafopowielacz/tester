@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <util/delay.h>
 
-#include "lcd44780.h"
+#include "lcd4478.h"
 
 // makrodefinicje operacji na sygna³ach steruj¹cych RS,RW oraz E
 
@@ -384,8 +384,9 @@ void lcd_locate(uint8_t y, uint8_t x)
 #if (LCD_Y>3)
     	case 3: y = LCD_LINE4; break; // adres 1 znaku 4 wiersza
 #endif
-	}
 
+
+	}
 	lcd_write_cmd( (0x80 + y + x) );
 }
 #endif

@@ -15,7 +15,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdlib.h>
-#include "LCD/lcd44780.h"
+#include "LCD/lcd4478.h"
 
 // Makra upraszczaj�ce dost�p do port�w
 // *** PORT
@@ -59,21 +59,14 @@ void main(void)
 
 
 	lcd_init();
-	_delay_ms(50);
-	lcd_cls();
+	_delay_ms(250);
+	lcd_locate(1,1);
 	lcd_str("test");
 	_delay_ms(1000);
 
 	while(1)
 	{
-		if(!key_lock && KEY)
-		{
-			LED_TOG;
-			key_lock = 1;
-		}
-		if(!KEY)	key_lock = 0;
-		_delay_ms(100);
-
-
+		if(KEY)	LED_TOG;
+		_delay_ms(500);
 	}
 }
