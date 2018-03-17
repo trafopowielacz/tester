@@ -62,6 +62,8 @@ void main(void)
 	_delay_ms(250);
 	lcd_locate(0,0);
 	lcd_str("hello world");
+	lcd_locate(1,0);
+	lcd_str("test");
 	_delay_ms(1000);
 
 	while(1)
