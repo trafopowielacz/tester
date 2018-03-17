@@ -52,6 +52,7 @@ void main(void)
 	lcd_cls();
 	lcd_str("ASD");
 
+
 	uint8_t key_lock=0;
 
 	//przycisk
