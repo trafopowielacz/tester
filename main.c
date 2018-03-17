@@ -62,7 +62,7 @@ void main(void)
 	_delay_ms(50);
 	lcd_cls();
 	lcd_str("test");
-	//_delay_ms(1000);
+	_delay_ms(1000);
 
 	while(1)
 	{
