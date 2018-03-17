@@ -63,7 +63,6 @@ void main(void)
 	DDR(LED_PORT)	|=	(1<<LED);
 	LED_OFF;
 
-	lcd_init(); //inicjalizuje wysw
 
 	while(1)
 	{
