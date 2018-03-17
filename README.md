@@ -1,1 +1,1 @@
-Program włącza diodę po kliknięciu przycisku
+Program zmienia stan pinu po kliknieciu przycisku
