@@ -1,3 +1,1 @@
-Tu kiedyś powstanie program to testera Li-ion
-
-Jak mnie widać? Odbiór!
+Program włącza diodę po kliknięciu przycisku
