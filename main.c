@@ -6,16 +6,16 @@
  */
 
 
+
 //#define F_CPU 8000000L  //nie pisz tego jak korzystasz z eclipse bo mogą byc błędy
 
+//chyba wszystko ok
 
 #include <avr/io.h>
 #include <util/delay.h>
 
 #define LED1 PB0
 #define SW PB1
-
-
 
 
 void main(void)
