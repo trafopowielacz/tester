@@ -52,7 +52,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="10_1Wire/main.c|07_UART/main.c|06_ADC/main.c|04_LCD/main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="10_1Wire|07_UART|06_ADC|04_LCD|10_1Wire/main.c|07_UART/main.c|06_ADC/main.c|04_LCD/main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
