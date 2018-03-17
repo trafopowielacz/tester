@@ -13,7 +13,7 @@
 #include <util/delay.h>
 #include "LCD/lcd44780.h"
 
-// Makra upraszczaj¹ce dostêp do portów
+// Makra upraszczajï¿½ce dostï¿½p do portï¿½w
 // *** PORT
 #define PORT(x) SPORT(x)
 #define SPORT(x) (PORT##x)
@@ -25,14 +25,14 @@
 #define SDDR(x) (DDR##x)
 
 
-//Definicja przycisków
+//Definicja przyciskï¿½w
 #define KEY_PORT				B
 #define KEY_PIN		 			1
 
 #define KEY 		!(PIN(KEY_PORT)	 & (1<<KEY_PIN))
 
 
-//Definicja wyjœc
+//Definicja wyjï¿½c
 #define LED			0
 #define LED_PORT	B
 #define LED_OFF		PORT(LED_PORT)&=~(1<<LED)
@@ -43,9 +43,12 @@
 #define LED1 PB0
 #define SW PB1
 
-
 void main(void)
 {
+	lcd_init();
+	lcd_cls();
+	lcd_str("ASD");
+
 	uint8_t key_lock=0;
 
 	//przycisk
