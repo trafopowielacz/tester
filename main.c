@@ -13,8 +13,13 @@
 //#define F_CPU 8000000L  //nie pisz tego jak korzystasz z eclipse bo mogą byc błędy
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
+
+#include <stdint.h>
+#include <string.h>
 #include <stdlib.h>
+
 #include "LCD/lcd4478.h"
 
 // Makra upraszczajace dostep do portow
