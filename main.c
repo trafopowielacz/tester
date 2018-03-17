@@ -25,6 +25,13 @@
 #define SDDR(x) (DDR##x)
 
 
+//Definicja przycisków
+#define KEY_PORT			C
+#define KEY_PIN 			2
+
+
+//#define KEY_UP 		!(PIN(KEY_PORT)	 & (1<<UP))
+
 #define LED1 PB0
 #define SW PB1
 
