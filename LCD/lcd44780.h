@@ -35,7 +35,7 @@
 // tu ustalamy za pomoc� zera lub jedynki czy sterujemy pinem RW
 //	0 - pin RW pod��czony na sta�e do GND
 //	1 - pin RW pod��czony do mikrokontrolera
-#define USE_RW 0
+#define USE_RW 1
 
 //----------------------------------------------------------------------------------------
 //
@@ -58,7 +58,7 @@
 #define LCD_RS 5
 
 #define LCD_RWPORT B
-#define LCD_RW 1
+#define LCD_RW 5
 
 #define LCD_EPORT C
 #define LCD_E 4

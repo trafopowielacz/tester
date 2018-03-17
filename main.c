@@ -29,28 +29,27 @@
 
 
 //Definicja przycisk�w
-#define KEY_PORT				B
-#define KEY_PIN		 			1
+#define KEY_PORT	 B
+#define KEY_PIN	1
 
 #define KEY 		!(PIN(KEY_PORT)	 & (1<<KEY_PIN))
 
 
-//Definicja wyj�c
-#define LED			0
+//Definicja wyjsc
+#define LED	0
 #define LED_PORT	B
 #define LED_OFF		PORT(LED_PORT)&=~(1<<LED)
 #define LED_ON		PORT(LED_PORT)|=(1<<LED)
 #define LED_TOG		PORT(LED_PORT)^=(1<<LED)
 
 
-#define LED1 PB0
-#define SW PB1
 
 void main(void)
 {
 	lcd_init();
 	lcd_cls();
-	lcd_str("ASD");
+		lcd_str("test");
+		//_delay_ms(1000);
 
 
 	uint8_t key_lock=0;
