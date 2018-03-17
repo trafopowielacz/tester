@@ -6,7 +6,7 @@
  */
 
 
-#define F_CPU 8000000L
+//#define F_CPU 8000000L  //nie pisz tego jak kozystasz z eclipse bo mogą byc błędy
 
 #include <avr/io.h>
 #include <util/delay.h>
