@@ -15,7 +15,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdlib.h>
-#include "LCD/lcd44780.h"
+#include "LCD/lcd4478.h"
 
 // Makra upraszczaj�ce dost�p do port�w
 // *** PORT
