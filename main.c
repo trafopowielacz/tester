@@ -12,6 +12,7 @@
 #include <util/delay.h>
 
 #define LED1 PB0
+#define SW PB1
 
 
 
@@ -19,11 +20,14 @@
 void main(void)
 {
     DDRB  |= (1<<LED1);
-    PORTB |= (1<<LED1);
+
+
+    DDRB &= ~(1<<SW);
+    PORTB |= (1<<SW);
+
    while (1)
    {
-        PORTB ^=(1<<LED1);
-        _delay_ms(100);
-        _delay_ms(100);
+        if(  !(PINB & (1<<SW) )) PORTB |= (1<<LED1) ;
+        else PORTB &= ~(1<<LED1);
     }
 }
