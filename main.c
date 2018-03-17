@@ -59,8 +59,8 @@ void main(void)
 
 
 	lcd_init();
-	_delay_ms(50);
-	lcd_cls();
+	_delay_ms(250);
+	lcd_locate(1,1);
 	lcd_str("test");
 	//_delay_ms(1000);
 
