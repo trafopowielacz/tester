@@ -21,6 +21,9 @@
 #include <stdlib.h>
 
 #include "LCD/lcd4478.h"
+//#include "OLED/ssd1306xled.h"
+
+
 
 // Makra upraszczajace dostep do portow
 // *** PORT
@@ -42,8 +45,8 @@
 
 
 //Definicja wyjsc
-#define LED				0
-#define LED_PORT		B
+#define LED	0
+#define LED_PORT	B
 #define LED_OFF			PORT(LED_PORT)&=~(1<<LED)
 #define LED_ON			PORT(LED_PORT)|=(1<<LED)
 #define LED_TOG			PORT(LED_PORT)^=(1<<LED)
@@ -52,6 +55,9 @@
 
 void main(void)
 {
+
+
+
 	uint8_t key_lock=0;
 
 	//przycisk
@@ -77,3 +83,4 @@ void main(void)
 		_delay_ms(500);
 	}
 }
+
